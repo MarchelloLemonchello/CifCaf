@@ -20,6 +20,11 @@ const router = createRouter({
       component: () => import('../views/GardenView.vue')
     },
     {
+      path: '/garden/:category',
+      name: 'gardenCategory',
+      component: () => import('../views/GardenCategoryView.vue')
+    },
+    {
       path: '/login',
       name: 'login',
       component: () => import('../views/LoginView.vue')
