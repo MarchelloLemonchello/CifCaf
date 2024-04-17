@@ -12,12 +12,34 @@ const router = createRouter({
     {
       path: '/about',
       name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: () => import('../views/AboutView.vue')
+    },
+    {
+      path: '/garden',
+      name: 'garden',
+      component: () => import('../views/GardenView.vue')
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: () => import('../views/LoginView.vue')
+    },
+    {
+      path: '/user',
+      name: 'user',
+      meta: {
+        needAuth: true,
+        authorized: true
+      },
+      component: () => import('../views/UserView.vue')
     }
   ]
+})
+
+router.beforeEach((to, from) => {
+  if(to.meta.needAuth && !to.meta.authorized) {
+    return {name: 'login'}
+  }
 })
 
 export default router
