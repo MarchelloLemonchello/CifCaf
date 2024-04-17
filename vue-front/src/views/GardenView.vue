@@ -28,7 +28,7 @@ const categoryList1 = reactive([
 <template> 
 <div>
   <h2 class="garden__title">
-    комнатные растения и цветы
+    Комнатные растения и цветы
   </h2>
   <ul class="list-reset flex garden__list">
     <li v-for="category in categoryList1" :key="category.name">
