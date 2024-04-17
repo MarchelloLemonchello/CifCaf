@@ -1,11 +1,13 @@
 <script setup>
 import UserBoard from '@/components/UserBoard.vue';
 import UsersPlantsList from '@/components/UsersPlantsList.vue';
+import TheCalendar from '@/components/TheCalendar.vue';
 </script>
 
 <template>
   <div class="flex user__wrapper">
     <UserBoard/>
+    <TheCalendar/>
   </div>
   <UsersPlantsList/>
 </template>

@@ -79,7 +79,7 @@
   padding: 55px;
   background-color: var(--form-1);
   border-radius: 20px;
-  gap: 47px;
+  gap: 50px;
 }
 
 .garden-plants__item {
@@ -89,6 +89,11 @@
   flex-direction: column;
   background-color: var(--txt-1);
   border-radius: 20px;
+  transition: all .2s ease-in-out;
+}
+
+.garden-plants__item:hover {
+  transform: scale(1.05);
 }
 
 .garden-plants__item img {

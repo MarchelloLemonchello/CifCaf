@@ -33,23 +33,21 @@ html {
     font-weight: 700;
     font-style: normal;
     font-display: swap;
+  } 
+  
+  body::before {
+    position: absolute;
+    top: 0;
+    right: 0;
+    content: url(../public/gazonia.jpg);
+    z-index: -1;
   }
-  
-  
   
   body {
     min-width: 200px;
     font-family: "Nunito", sans-serif;
     font-weight: 400;
     background: var(--bg-1);
-  }
-  
-  body::after {
-    position: absolute;
-    top: 0;
-    right: 0;
-    content: url(../img/gazonia.jpg);
-    z-index: 0;
   }
   
   /* glob */
@@ -89,6 +87,7 @@ html {
   padding: 0 45px;
   margin: 0 auto;
   width: 100%;
+  z-index: 1;
   }
   
   .section-title {
@@ -120,7 +119,6 @@ html {
     font-style: normal;
     font-weight: 700;
     line-height: normal;
-    /* letter-spacing: 0.1px; */
     border-radius: 6px;
     color: var(--txt-2);
     background-color: var(--txt-1);
