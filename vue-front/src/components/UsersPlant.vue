@@ -5,18 +5,23 @@ const props = defineProps({
     type: Object
   }
 })
+  const nextWateringTime = new Date(props.plant.nextWateringTime*1000).toLocaleString("ru-RU")
+  // const nowTime = new Date()
+  // const progress = (Date.parse(nowTime) - (props.plant.lastWateringTime*1000)) / ((props.plant.nextWateringTime - props.plant.lastWateringTime)*1000)
+  // console.log(progress);
+
 </script>
 
 <template>
   <li class="flex users-plant">
     <div class="flex">
-      <img src="https://www.rgo.ru/sites/default/files/styles/head_image_article/public/node/70818/photo-2023-10-30-122344.jpeg?itok=8_OHzVoZ" alt="">
-      <p>{{ props.plant.name }}</p>
+      <img :src="props.plant.plantImage" alt="">
+      <p>{{ props.plant.plantName }}</p>
     </div>
     <div class="flex users-plant__progress-wrapper">
-      <p>10%</p>
+      <p> следующий полив: {{ nextWateringTime }}</p>
       <div class="users-plant__progress-bar">
-        <div class="users-plant__progress-bar-filled">
+        <div class="users-plant__progress-bar-filled" :style="`width: ${props.plant.prog}%;`">
         </div>
       </div>
     </div>
@@ -71,7 +76,7 @@ const props = defineProps({
 
 .users-plant__progress-bar-filled {
   height: 45px;
-  width: 10%;
+  width: 30%;
   border-radius: 10px;
   background-color: var(--act-1);
 }

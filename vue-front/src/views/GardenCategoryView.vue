@@ -20,7 +20,6 @@ onMounted(async () => {
     console.log(err);
   }
 })
-
 </script>
 
 <template>    
@@ -34,12 +33,12 @@ onMounted(async () => {
       :key="plant.id"
     >
       <img :src="plant.image" alt="">
-      <div class="garden-plants__wrapper">
+      <div class="flex garden-plants__wrapper">
         <h3>
           {{ plant.name }}
         </h3>
         <p>
-          Многолетнее бесстебельное растение
+          {{ plant.wateringTime }}
         </p>
       </div>
       <button class="btn-reset garden-plants__btn">
@@ -81,7 +80,7 @@ onMounted(async () => {
 
 .garden-plants__item img {
   height: 210px;
-  width: 200px;
+  /* width: 200px; */
 }
 
 .garden-plants__btn {
@@ -96,6 +95,13 @@ onMounted(async () => {
 .garden-plants__btn:hover {
   background-color: var(--bg-2);
   color: var(--txt-1);
+}
+
+.garden-plants__wrapper {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 </style>

@@ -2,11 +2,9 @@
 import {reactive} from 'vue';
 import UsersPlant from './UsersPlant.vue';
 
-let plants = reactive([
-  {name:'фикус1' , id:1},
-  {name:'фикус2', id:2}
-])
-
+const props = defineProps({
+  props: Object
+})
 </script>
 
 <template>
@@ -24,7 +22,7 @@ let plants = reactive([
       </button>
     </div>
     <ul class="list-reset users-plants__list" v-if="true">
-      <UsersPlant v-for="plant in plants" :key="plant.id" :plant="plant"/>
+      <UsersPlant v-for="plant in props.props" :key="plant.id" :plant="plant"/>
     </ul>
   </div>
 </template>
@@ -32,6 +30,7 @@ let plants = reactive([
 <style>
 .users-plants {
   padding: 35px 70px;
+  margin-bottom: 50px;
   background-color: var(--form-1);
   border-radius: 20px;
 }

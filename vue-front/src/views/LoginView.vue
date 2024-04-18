@@ -1,3 +1,31 @@
+<script setup>
+import { reactive } from 'vue';
+import axios from 'axios';
+import { useRoute } from 'vue-router';
+
+const logForm = reactive({
+  email: '',
+  password: ''
+})
+
+
+ async function log() {
+  try {
+    const res = await axios.post(`${import.meta.env.VITE_BASE_API}Auth/login` , {
+      email: logForm.email ,
+      password: logForm.password
+    })
+    // console.log(res);
+    if (res.status == 200) {
+      localStorage.setItem('plantToken', JSON.stringify(res.data.token))
+  }
+  } catch (error) {
+    // console.log(error);
+  }
+}
+
+</script>
+
 <template>
   <div class="log flex">
     <div class="log__left">
@@ -7,9 +35,9 @@
       <h2>
         Вход
       </h2>
-      <input type="text" placeholder="Имя">
-      <input type="password" name="" id="" placeholder="Пароль">
-      <button class="btn-reset">Войти</button>
+      <input type="email" placeholder="Почта" v-model="logForm.email">
+      <input type="password" name="" id="" placeholder="Пароль" v-model="logForm.password">
+      <button class="btn-reset" @click="$router.push('/user')">Войти</button>
       <p>
         Выполняя вход, я соглашаюсь с положением о конфиденциальности и условиями обслуживания.
       </p>

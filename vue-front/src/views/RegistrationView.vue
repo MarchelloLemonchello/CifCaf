@@ -1,13 +1,33 @@
+<script setup>
+import { reactive } from 'vue';
+import axios from 'axios';
+
+const regForm = reactive({
+  email: '',
+  password: ''
+})
+
+ const reg = async () => {
+  const res = await axios.post(`${import.meta.env.VITE_BASE_API}Auth/register` , {
+    email: regForm.email ,
+    password: regForm.password,
+    telegramNicName: null
+  }).catch(function (error) {
+    console.log(error);
+  });
+  console.log(res);
+}
+</script>
+
 <template>
   <div class="reg flex">
     <div class="flex reg__left">
       <h2>
         Регистрация
       </h2>
-      <input type="text" placeholder="Имя">
-      <input type="email" placeholder="Почта">
-      <input type="password" name="" id="" placeholder="Пароль">
-      <button class="btn-reset">Создать аккаунт</button>
+      <input type="email" placeholder="Почта" v-model="regForm.email">
+      <input type="password" name="" id="" placeholder="Пароль" v-model="regForm.password">
+      <button class="btn-reset" @click="reg">Создать аккаунт</button>
       <p>
         Регистрируясь, я соглашаюсь с положением о конфиденциальности и условиями обслуживания.
       </p>
