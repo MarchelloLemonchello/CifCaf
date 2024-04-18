@@ -6,7 +6,7 @@
       </h2>
       <input type="text" placeholder="Имя">
       <input type="email" placeholder="Почта">
-      <input type="password" name="" id="" placeholder="пороль">
+      <input type="password" name="" id="" placeholder="Пароль">
       <button class="btn-reset">Создать аккаунт</button>
       <p>
         Регистрируясь, я соглашаюсь с положением о конфиденциальности и условиями обслуживания.

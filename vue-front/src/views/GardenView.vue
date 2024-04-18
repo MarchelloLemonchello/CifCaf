@@ -1,7 +1,23 @@
 <script setup>
 import { useRouter } from 'vue-router';
-import { reactive } from 'vue'
-const router = useRouter()
+import { onMounted , reactive } from 'vue';
+import axios from 'axios';
+
+const router = useRouter();
+const getUrl = 'http://localhost:5228/api/Category/getCategories'
+const categories = reactive([])
+
+onMounted(async () => {
+  try {
+    const { data } = await axios.get(getUrl)
+    categories.value = data;
+    console.log(categories.value);
+
+  } catch (err) {
+    console.log(err);
+  }
+})
+
 
 const goToSubcategory = (category) => {
   router.push(`/garden/${category}`)
@@ -37,16 +53,17 @@ const categoryList1 = reactive([
         class="garden-category flex"
         @click="goToSubcategory(category.name)"
       >
-        <img :src="`public/${category.img}`" alt="">
+        <img :src="`${category.img}`" alt="">
         <h3>
           {{ category.name }}
         </h3>
       </a>
     </li>
   </ul>
-  <h2 class="garden__title">
+  <!-- <h2 class="garden__title">
     Уличные растения и цветы
-  </h2>
+  </h2> -->
+
 </div>  
 </template>
 

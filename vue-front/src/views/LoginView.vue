@@ -8,7 +8,7 @@
         Вход
       </h2>
       <input type="text" placeholder="Имя">
-      <input type="password" name="" id="" placeholder="пороль">
+      <input type="password" name="" id="" placeholder="Пароль">
       <button class="btn-reset">Войти</button>
       <p>
         Выполняя вход, я соглашаюсь с положением о конфиденциальности и условиями обслуживания.

@@ -32,6 +32,29 @@
         Высадить
       </button>
     </div>
+    <ul class="list-reset flex hero__plus">
+      <li class="flex">
+        <img src="/plus1.svg" alt="">
+        <div>
+          <h3>Местоположение</h3>
+          <p>сад в любой точке мира</p>
+        </div>
+      </li>
+      <li class="flex">
+        <img src="/plus2.svg" alt="">
+        <div>
+          <h3>Подходит аллергикам</h3>
+          <p>наши растения гипоаллергенны </p>
+        </div>
+      </li>
+      <li class="flex">
+        <img src="/plus3.svg" alt="">
+        <div>
+          <h3>Разнообразие</h3>
+          <p>большой выбор растений</p>
+        </div>
+      </li>
+    </ul>
   </div>
 </div>
 </template>
@@ -48,6 +71,7 @@
 
 .hero__wrapper {
   margin-left: 575px;
+  margin-bottom: 265px;
 }
 
 .hero__title {
@@ -86,5 +110,30 @@
 
 .hero__btn:hover {
   background-color: var(--txt-2);
+}
+
+.hero__plus {
+  align-items: center;
+  justify-content: space-between;
+}
+
+.hero__plus li {
+  width: 355px;
+  height: 110px;
+  padding: 30px;
+  background-color: var(--txt-1);
+  border-radius: 20px;
+  gap: 25px;
+}
+
+.hero__plus h3 {
+  margin: 0;
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.hero__plus p {
+  margin: 0;
+  font-size: 15px;
 }
 </style>
