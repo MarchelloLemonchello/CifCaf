@@ -3,12 +3,11 @@ import { onMounted , reactive } from 'vue';
 import axios from 'axios';
 import CategoryBlock from '@/components/CategoryBlock.vue'
 
-const getUrl = 'http://localhost:5228/api/Category/getCategories'
 const categories = reactive([])
 
 onMounted(async () => {
   try {
-    const { data } = await axios.get(getUrl)
+    const { data } = await axios.get(`${import.meta.env.VITE_BASE_API}Category/getCategories`)
     categories.value = data;
 
   } catch (err) {

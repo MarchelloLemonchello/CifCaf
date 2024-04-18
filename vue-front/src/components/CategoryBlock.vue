@@ -10,6 +10,7 @@ const router = useRouter();
 const goToSubcategory = (subcategory) => {
   router.push(`/garden/${subcategory.id}`)
 }
+
 </script>
 
 <template> 
@@ -34,7 +35,6 @@ const goToSubcategory = (subcategory) => {
     </li>
   </ul>    
 </template>
-
 
 <style>
 .garden__title {
