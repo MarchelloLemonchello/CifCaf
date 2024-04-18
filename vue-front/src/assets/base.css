@@ -39,7 +39,7 @@ html {
     position: absolute;
     top: 0;
     right: 0;
-    content: url(../public/gazonia.jpg);
+    content: url(/gazonia.jpg);
     z-index: -1;
   }
   
@@ -63,6 +63,8 @@ html {
     --form-2: #EEE;
     --form-3: #DEDEDE;
     --act-1: #81B151;
+    --input-1: #E6E6E6;
+    --link-1: #0956B5;
   }
   
   .list-reset {
