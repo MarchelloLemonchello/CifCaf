@@ -7,7 +7,6 @@ const props = defineProps({
 })
 
 const router = useRouter();
-// const subcategory = reactive([])
 const goToSubcategory = (subcategory) => {
   router.push(`/garden/${subcategory.id}`)
 }
