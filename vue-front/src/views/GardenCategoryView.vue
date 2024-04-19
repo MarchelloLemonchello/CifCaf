@@ -5,6 +5,7 @@ import axios from 'axios';
 
 const route = useRoute()
 const id = route.params.category
+const token = JSON.parse(localStorage.getItem('plantToken'))
 
 const name = ref('')
 const plantsArr = reactive([])
@@ -20,6 +21,24 @@ onMounted(async () => {
     console.log(err);
   }
 })
+
+async function addPlant(id) {
+  try {
+    console.log(id);
+    console.log(token);
+    const res = await axios.post(`${import.meta.env.VITE_BASE_API}UserPlant?plantId=${id}&token=${token}` , {}, 
+    { headers: {"Authorization" : `Bearer ${token}`} })
+    // console.log(res);
+    if (res.status == 200) {
+      // localStorage.setItem('plantToken', JSON.stringify(res.data.token))
+      // router.push('/user')
+      window.alert('растение добавлено')
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 </script>
 
 <template>    
@@ -38,10 +57,14 @@ onMounted(async () => {
           {{ plant.name }}
         </h3>
         <p>
-          {{ plant.wateringTime }}
+          {{ plant.description }}
         </p>
       </div>
-      <button class="btn-reset garden-plants__btn">
+      <button 
+        v-if="(token!=='' && token!==null)"
+        class="btn-reset garden-plants__btn"
+        @click="addPlant(plant.id)"
+      >
         Добавить
       </button>
     </li>

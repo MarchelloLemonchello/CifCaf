@@ -1,40 +1,28 @@
 <script setup>
-import { reactive } from 'vue';
+import { reactive , onMounted } from 'vue';
+import axios from 'axios';
 import UserBoard from '@/components/UserBoard.vue';
 import UsersPlantsList from '@/components/UsersPlantsList.vue';
 import TheCalendar from '@/components/TheCalendar.vue';
 
-const actor = '7ac7b5ac-b281-48a7-8293-b0052646723f'
+const token = JSON.parse(localStorage.getItem('plantToken'))
+// console.log(token);
 
-const usersPlantsArr = reactive([
-  {
-    id: 0,
-    plantName: 'кактус',
-    plantDescription: 'описание',
-    plantImage: 'https://s.pfst.net/2011.09/7819528363cecf78a31e70166bb8cdbff95739da27_b.jpg',
-    lastWateringTime: 1713455576,
-    nextWateringTime: 1713455756,
-    prog: 45
-  },
-  {
-    id: 2,
-    plantName: 'фикус',
-    plantDescription: 'описание',
-    plantImage: 'https://s.pfst.net/2011.09/7819528363cecf78a31e70166bb8cdbff95739da27_b.jpg',
-    lastWateringTime: 1713454576,
-    nextWateringTime: 1713456756,
-    prog: 35
-  },
-  {
-    id: 3,
-    plantName: 'камень',
-    plantDescription: 'описание',
-    plantImage: 'https://s.pfst.net/2011.09/7819528363cecf78a31e70166bb8cdbff95739da27_b.jpg',
-    lastWateringTime: 1713445576,
-    nextWateringTime: 1713465756,
-    prog: 50
+const usersPlantsArray = reactive([])
+
+onMounted( () => {
+  try {
+    plansListUpdate()
+  } catch (err) {
+    console.log(err);
   }
-])
+})
+
+async function plansListUpdate() {
+  const { data } = await axios.get(`${import.meta.env.VITE_BASE_API}UserPlant/${token}/GetUserPlants`)
+    usersPlantsArray.value = data;
+    // console.log(usersPlantsArray);
+}
 
 </script>
 
@@ -43,7 +31,7 @@ const usersPlantsArr = reactive([
     <UserBoard/>
     <TheCalendar/>
   </div>
-  <UsersPlantsList :props="usersPlantsArr"/>
+  <UsersPlantsList :props="usersPlantsArray.value"/>
 </template>
 
 <style>

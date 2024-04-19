@@ -1,7 +1,10 @@
 <script setup>
 import { reactive } from 'vue';
 import axios from 'axios';
-import { useRoute } from 'vue-router';
+import { useRoute , useRouter } from 'vue-router';
+
+const route = useRoute()
+const router = useRouter()
 
 const logForm = reactive({
   email: '',
@@ -18,6 +21,7 @@ const logForm = reactive({
     // console.log(res);
     if (res.status == 200) {
       localStorage.setItem('plantToken', JSON.stringify(res.data.token))
+      router.push('/user')
   }
   } catch (error) {
     // console.log(error);
@@ -37,7 +41,7 @@ const logForm = reactive({
       </h2>
       <input type="email" placeholder="Почта" v-model="logForm.email">
       <input type="password" name="" id="" placeholder="Пароль" v-model="logForm.password">
-      <button class="btn-reset" @click="$router.push('/user')">Войти</button>
+      <button class="btn-reset" @click="log">Войти</button>
       <p>
         Выполняя вход, я соглашаюсь с положением о конфиденциальности и условиями обслуживания.
       </p>

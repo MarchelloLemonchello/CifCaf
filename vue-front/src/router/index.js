@@ -38,8 +38,7 @@ const router = createRouter({
       path: '/user',
       name: 'user',
       meta: {
-        needAuth: true,
-        authorized: true
+        needAuth: true
       },
       component: () => import('../views/UserView.vue')
     }
@@ -47,7 +46,7 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from) => {
-  if(to.meta.needAuth && !to.meta.authorized) {
+  if(to.meta.needAuth && (localStorage.getItem('plantToken')==='' || localStorage.getItem('plantToken')===null)) {
     return {name: 'login'}
   }
 })
