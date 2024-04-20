@@ -22,7 +22,7 @@ const goToSubcategory = (subcategory) => {
       v-for="sub in props.props.children"
       :key="sub.id"
     >
-      <a 
+      <div 
         href="#" 
         class="garden-category flex" 
         @click="goToSubcategory(sub)"     
@@ -31,7 +31,7 @@ const goToSubcategory = (subcategory) => {
         <h3>
           {{ sub.name }}
         </h3>
-      </a>
+      </div>
     </li>
   </ul>    
 </template>
@@ -56,6 +56,7 @@ const goToSubcategory = (subcategory) => {
 
 .garden-category {
   /* display: block; */
+  cursor: pointer;
   width: 600px;
   height: 270px;
   background-color: var(--txt-1);

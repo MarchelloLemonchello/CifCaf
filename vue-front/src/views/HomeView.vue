@@ -115,6 +115,7 @@
 .hero__plus {
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 30px;
 }
 
 .hero__plus li {

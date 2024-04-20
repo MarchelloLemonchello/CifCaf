@@ -22,7 +22,7 @@ const logForm = reactive({
     if (res.status == 200) {
       localStorage.setItem('plantToken', JSON.stringify(res.data.token))
       router.push('/user')
-  }
+    }
   } catch (error) {
     // console.log(error);
   }

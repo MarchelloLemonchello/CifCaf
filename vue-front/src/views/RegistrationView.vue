@@ -1,21 +1,29 @@
 <script setup>
 import { reactive } from 'vue';
 import axios from 'axios';
+import { useRouter } from 'vue-router';
+
+const router = useRouter()
+
 
 const regForm = reactive({
   email: '',
   password: ''
 })
 
- const reg = async () => {
+
+async function reg() {
   const res = await axios.post(`${import.meta.env.VITE_BASE_API}Auth/register` , {
     email: regForm.email ,
-    password: regForm.password,
-    telegramNicName: null
+    password: regForm.password
   }).catch(function (error) {
     console.log(error);
   });
   console.log(res);
+  if (res.status==200) {
+    alert('вы зарегистрированы');
+    router.push('/login')
+  }
 }
 </script>
 

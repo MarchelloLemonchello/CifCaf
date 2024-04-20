@@ -95,6 +95,7 @@ async function addPlant(id) {
   width: 280px;
   padding: 20px 30px;
   align-items: center;
+  justify-content: space-between;
   flex-direction: column;
   background-color: var(--txt-1);
   border-radius: 20px;
@@ -126,5 +127,6 @@ async function addPlant(id) {
   justify-content: center;
   text-align: center;
 }
+
 
 </style>
